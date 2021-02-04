@@ -1225,7 +1225,7 @@
     state: present
     dest: /etc/bashrc
     regexp: '.*umask.*'
-    line: 'umask 027'
+    line: 'umask {{ centos7cis_default_user_umask }}'
   when:
     - centos7cis_level1 is defined and centos7cis_level1
     #- centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
@@ -1240,7 +1240,7 @@
       state: present
       dest: /etc/profile
       regexp: '.*umask.*'
-      line: 'umask 027'
+      line: 'umask {{ centos7cis_default_user_umask }}'
   when:
     - centos7cis_level1 is defined and centos7cis_level1
     #- centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
