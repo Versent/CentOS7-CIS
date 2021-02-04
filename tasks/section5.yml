@@ -270,18 +270,18 @@
     - rule_5.2.10
 
 # Removed 5.2.11 from CIS Benchmark
- - name: "SCORED | 5.2.11 | PATCH | Ensure only approved ciphers are used"
-   lineinfile:
-       state: present
-       dest: /etc/ssh/sshd_config
-       regexp: '^Ciphers'
-       line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr'
-   tags:
-       - level1
-       - level2
-       - medium
-       - patch
-       - rule_5.2.11
+# - name: "SCORED | 5.2.11 | PATCH | Ensure only approved ciphers are used"
+#   lineinfile:
+#       state: present
+#       dest: /etc/ssh/sshd_config
+#       regexp: '^Ciphers'
+#       line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr'
+#   tags:
+#       - level1
+#       - level2
+#       - medium
+#       - patch
+#       - rule_5.2.11
 
 #- name: "SCORED | 5.2.11 | PATCH | Ensure only approved MAC algorithms are used"
 #  lineinfile:
