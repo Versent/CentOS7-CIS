@@ -1224,7 +1224,7 @@
   lineinfile:
     state: present
     dest: /etc/bashrc
-    regexp: '.*umask'
+    regexp: '.*umask.*'
     line: 'umask {{ centos7cis_default_user_umask }}'
   when:
     - centos7cis_level1 is defined and centos7cis_level1
@@ -1239,7 +1239,7 @@
   lineinfile:
       state: present
       dest: /etc/profile
-      regexp: '.*umask'
+      regexp: '.*umask.*'
       line: 'umask {{ centos7cis_default_user_umask }}'
   when:
     - centos7cis_level1 is defined and centos7cis_level1
@@ -1269,7 +1269,7 @@
   lineinfile:
     state: present
     dest: "{{ item.path }}"
-    regexp: '.*umask'
+    regexp: '.*umask.*'
     line: 'umask {{ centos7cis_default_user_umask }}'
     backup: yes
   with_items: "{{ profiled_dir.files }}"
