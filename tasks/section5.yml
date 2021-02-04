@@ -270,34 +270,34 @@
     - rule_5.2.10
 
 # Removed 5.2.11 from CIS Benchmark
-# - name: "SCORED | 5.2.11 | PATCH | Ensure only approved ciphers are used"
-#   lineinfile:
-#       state: present
-#       dest: /etc/ssh/sshd_config
-#       regexp: '^Ciphers'
-#       line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr'
-#   tags:
-#       - level1
-#       - level2
-#       - medium
-#       - patch
-#       - rule_5.2.11
+ - name: "SCORED | 5.2.11 | PATCH | Ensure only approved ciphers are used"
+   lineinfile:
+       state: present
+       dest: /etc/ssh/sshd_config
+       regexp: '^Ciphers'
+       line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr'
+   tags:
+       - level1
+       - level2
+       - medium
+       - patch
+       - rule_5.2.11
 
-- name: "SCORED | 5.2.11 | PATCH | Ensure only approved MAC algorithms are used"
-  lineinfile:
-    state: present
-    dest: /etc/ssh/sshd_config
-    regexp: '^MACs'
-    line: 'MACs {{ centos7cis_ssh_mac_algorithms | quote }}'
-    #line: 'MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ssh_mac_algorithms is defined
-  tags:
-    - level1
-    - patch
-    - rule_5.2.11
-
+#- name: "SCORED | 5.2.11 | PATCH | Ensure only approved MAC algorithms are used"
+#  lineinfile:
+#    state: present
+#    dest: /etc/ssh/sshd_config
+#    regexp: '^MACs'
+#    line: 'MACs {{ centos7cis_ssh_mac_algorithms | quote }}'
+#    #line: 'MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com'
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#    - centos7cis_ssh_mac_algorithms is defined
+#  tags:
+#    - level1
+#    - patch
+#    - rule_5.2.11
+#
 - name: "SCORED | 5.2.12 | PATCH | Ensure SSH Idle Timeout Interval is configured"
   lineinfile:
     state: absent
@@ -455,7 +455,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -476,7 +476,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -497,7 +497,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -632,7 +632,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -656,7 +656,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -677,7 +677,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -698,7 +698,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -726,7 +726,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -747,7 +747,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -768,7 +768,7 @@
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_ad_ldap_joined_machine is defined and centos7cis_ad_ldap_joined_machine
+    #- centos7cis_ad_ldap_joined_machine is defined and centos7cis_ad_ldap_joined_machine
   tags:
     - level1
     - patch
@@ -1290,9 +1290,9 @@
     regexp: '^TMOUT'
     line: 'TMOUT=600'
   when:
-    - centos7cis_level2 is defined and centos7cis_level2
+    - centos7cis_level1 is defined and centos7cis_level1
   tags:
-    - level2
+    - level1
     - patch
     - rule_5.4.5
     - low
@@ -1304,9 +1304,9 @@
     regexp: '^TMOUT'
     line: 'TMOUT=600'
   when:
-    - centos7cis_level2 is defined and centos7cis_level2
+    - centos7cis_level1 is defined and centos7cis_level1
   tags:
-    - level2
+    - level1
     - patch
     - rule_5.4.5
     - low

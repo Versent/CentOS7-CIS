@@ -209,7 +209,7 @@ centos7cis_ssh_mac_algorithms: "hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@
 centos7cis_password_creation_requirements: true
 
 # Section 5.4.1.1 | Ensure password expiration is 365 days or less
-centos7cis_password_expiration: false
+centos7cis_password_expiration: true
 
 # Section 5.4.1.2 | Ensure minimum days between password changes is 7 or more
 centos7cis_password_minimum_days_password_change: true
