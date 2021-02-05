@@ -1220,35 +1220,7 @@
     - patch
     - rule_5.4.3
 
-- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
-  lineinfile:
-    state: present
-    dest: /etc/bashrc
-    regexp: 'umask'
-    line: 'umask {{ centos7cis_default_user_umask }}'
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
-  tags:
-    - level1
-    - patch
-    - rule_5.4.4
-    - low
 
-- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
-  lineinfile:
-    state: present
-    dest: /etc/profile
-    regexp: 'umask\s[0-9]{1,3}'
-    line: 'umask {{ centos7cis_default_user_umask }}'
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
-  tags:
-    - level1
-    - patch
-    - rule_5.4.4
-    - low
 
 - name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
   replace:
@@ -1264,12 +1236,42 @@
     - rule_5.4.4
     - low
 
+- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
+  replace:
+    path: /etc/bashrc
+    regexp: 'umask\s[0-9]{1,3}'
+    replace: 'umask {{ centos7cis_default_user_umask }}'
+  when:
+    - centos7cis_level1 is defined and centos7cis_level1
+    - centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
+  tags:
+    - level1
+    - patch
+    - rule_5.4.4
+    - low
+
+- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
+  find:
+      paths: /etc/profile.d/
+    recurse: yes
+    patterns: "*.sh"
+  register: profiled_dir
+  when:
+      - centos7cis_level1 is defined and centos7cis_level1
+    - centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
+  tags:
+      - level1
+    - patch
+    - rule_5.4.4
+    - low
+
+  
 #- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
-#  find:
-#    paths: /etc/profile.d/
-#    recurse: yes
-#    patterns: "*.sh"
-#  register: profiled_dir
+#  lineinfile:
+#    state: present
+#    dest: /etc/bashrc
+#    regexp: 'umask'
+#    line: 'umask {{ centos7cis_default_user_umask }}'
 #  when:
 #    - centos7cis_level1 is defined and centos7cis_level1
 #    - centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
@@ -1278,6 +1280,22 @@
 #    - patch
 #    - rule_5.4.4
 #    - low
+#
+#- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
+#  lineinfile:
+#    state: present
+#    dest: /etc/profile
+#    regexp: 'umask\s[0-9]{1,3}'
+#    line: 'umask {{ centos7cis_default_user_umask }}'
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#    - centos7cis_modify_default_user_umask is defined and centos7cis_modify_default_user_umask
+#  tags:
+#    - level1
+#    - patch
+#    - rule_5.4.4
+#    - low
+
 
 #- name: "SCORED | 5.4.4 | PATCH | Ensure default user umask is 027 or more restrictive"
 #  lineinfile:
