@@ -269,8 +269,8 @@
     - patch
     - rule_5.2.10
 
- Removed 5.2.12 from CIS Benchmark
- - name: "SCORED | 5.2.11 | PATCH | Ensure only approved ciphers are used"
+ #Removed 5.2.12 from CIS Benchmark
+ - name: "SCORED | 5.2.12 | PATCH | Ensure only approved ciphers are used"
    lineinfile:
        state: present
        dest: /etc/ssh/sshd_config
@@ -282,6 +282,7 @@
        - medium
        - patch
        - rule_5.2.11
+
 - name: "SCORED | 5.2.12 | PATCH | Ensure only approved MAC algorithms are used"
   lineinfile:
     state: present
