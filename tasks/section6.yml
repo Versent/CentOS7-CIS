@@ -237,88 +237,88 @@
     - patch
     - rule_6.2.5
 
-- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
-  copy:
-    src: scripts/6.2.6.sh
-    dest: /opt/6.2.6.sh
-    owner: root
-    group: root
-    mode: 0700
-  tags:
-    - rule_6.2.6
-    - low
-    - level1
-    - low
+#- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
+#  copy:
+#    src: scripts/6.2.6.sh
+#    dest: /opt/6.2.6.sh
+#    owner: root
+#    group: root
+#    mode: 0700
+#  tags:
+#    - rule_6.2.6
+#    - low
+#    - level1
+#    - low
+#
+#- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
+#  copy:
+#    src: scripts/6.2.6.sh
+#    dest: /opt/6.2.6.sh
+#    owner: root
+#    group: root
+#    mode: 0700
+#  changed_when: no
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#  tags:
+#    - rule_6.2.6
+#    - low
+#    - level1
+#    - low
+#
+#- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
+#  shell: /opt/6.2.6.sh
+#  args:
+#    executable: /bin/bash
+#  register: root_path_integrity
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#  tags:
+#    - rule_6.2.6
+#    - low
+#    - level1
+#    - low
 
-- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
-  copy:
-    src: scripts/6.2.6.sh
-    dest: /opt/6.2.6.sh
-    owner: root
-    group: root
-    mode: 0700
-  changed_when: no
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-  tags:
-    - rule_6.2.6
-    - low
-    - level1
-    - low
+## - name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
+##   debug:
+##     var: root_path_integrity.stdout_lines
+##   when:
+##     - centos7cis_level1 is defined and centos7cis_level1
+##     - root_path_integrity is defined
+##     - root_path_integrity.stdout != ""
+##   tags:
+##     - rule_6.2.6
+##     - low
+##     - level1
+##     - low
 
-- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
-  shell: /opt/6.2.6.sh
-  args:
-    executable: /bin/bash
-  register: root_path_integrity
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-  tags:
-    - rule_6.2.6
-    - low
-    - level1
-    - low
-
-# - name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
-#   debug:
-#     var: root_path_integrity.stdout_lines
-#   when:
-#     - centos7cis_level1 is defined and centos7cis_level1
-#     - root_path_integrity is defined
-#     - root_path_integrity.stdout != ""
-#   tags:
-#     - rule_6.2.6
-#     - low
-#     - level1
-#     - low
-
-- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
-  debug:
-    msg: "PASS | 6.2.6 | root PATH integrity"
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-    - root_path_integrity is defined
-    - root_path_integrity.stdout == ""
-  tags:
-    - rule_6.2.6
-    - low
-    - level1
-    - low
-
-- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
-  file:
-    path: /opt/6.2.6.sh
-    owner: root
-    group: root
-    state: absent
-  changed_when: no
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-  tags:
-    - rule_6.2.6
-    - low
-    - level1
-    - low
+#- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
+#  debug:
+#    msg: "PASS | 6.2.6 | root PATH integrity"
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#    - root_path_integrity is defined
+#    - root_path_integrity.stdout == ""
+#  tags:
+#    - rule_6.2.6
+#    - low
+#    - level1
+#    - low
+#
+#- name: "SCORED | 6.2.6 | PATCH | Ensure root PATH Integrity"
+#  file:
+#    path: /opt/6.2.6.sh
+#    owner: root
+#    group: root
+#    state: absent
+#  changed_when: no
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#  tags:
+#    - rule_6.2.6
+#    - low
+#    - level1
+#    - low
 
 - name: "SCORED | 6.2.7 | PATCH | Ensure all users' home directories exist"
   copy:
