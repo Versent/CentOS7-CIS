@@ -714,6 +714,7 @@
     type: auth
     control: [default=die]
     module_path: pam_faillock.so 
+    module_arguments: authfail audit deny=5 unlock_time=900
     new_type: auth
     new_control: sufficient 
     new_module_path: pam_faillock.so
