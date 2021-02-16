@@ -451,7 +451,7 @@
     state: after
   ignore_errors: yes
   loop:
-    - system-auth
+    #- system-auth
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
@@ -541,7 +541,7 @@
     state: after
   ignore_errors: yes
   loop:
-    - system-auth
+    #- system-auth
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
@@ -627,7 +627,7 @@
     state: after
   ignore_errors: yes
   loop:
-    - system-auth
+    #- system-auth
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
@@ -722,7 +722,7 @@
     state: after
   ignore_errors: yes
   loop:
-    - system-auth
+    #- system-auth
     - password-auth
   when:
     - centos7cis_level1 is defined and centos7cis_level1
