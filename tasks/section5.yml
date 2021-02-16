@@ -438,7 +438,7 @@
 
 - name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
   blockinfile:
-    dest: {{ item}} 
+    dest: '{{ item}}'
     insertafter: '\s*auth\s*required\s*pam_deny.so\s*'
     block: |
       auth       required pam_faillock.so preauth audit silent deny=5 unlock_time=900
