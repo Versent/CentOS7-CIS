@@ -618,10 +618,10 @@
   pamd:
     name: '{{ item }}'
     type: auth
-    control: [success=1 default=bad]
+    control: '[success=1 default=bad]'
     module_path: pam_unix.so
     new_type: auth
-    new_control: [default=die]
+    new_control: '[default=die]'
     new_module_path: pam_faillock.so
     module_arguments: authfail audit deny=5 unlock_time=900
     state: after
