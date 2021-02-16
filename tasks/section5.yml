@@ -436,31 +436,53 @@
 # auth [default=die] pam_faillock.so authfail audit deny=5 unlock_time=900
 
 
+- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
+  blockinfile:
+    path: "{{ item.path }}"
+    insertafter: '\s*auth\s*required\s*pam_deny.so\s*'
+    block: |
+      auth       required pam_faillock.so preauth audit silent deny=5 unlock_time=900
+      auth       [success=1 default=bad] pam_unix.so
+      auth       [default=die] pam_faillock.so authfail audit deny=5 unlock_time=900
+      auth       sufficient pam_faillock.so authsucc audit deny=5 unlock_time=900"
+    with_items:
+      - /etc/pam.d/system-auth
+      - /etc/pam.d/password-auth
+    when:
+      - centos7cis_level1 is defined and centos7cis_level1
+      #- centos7cis_password_expiration is defined and centos7cis_password_expiration
+    tags:
+      - level1
+      - patch
+      - rule_5.3.2
+      - low
+
+
 # START Line 1 # auth required pam_faillock.so preauth audit silent deny=5 unlock_time=900 #
 
-- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
-  pamd:
-    name: '{{ item }}'
-    type: auth
-    control: required
-    module_path: pam_deny.so
-    new_type: auth
-    new_control: required
-    new_module_path: pam_faillock.so
-    module_arguments: preauth audit silent deny=5 unlock_time=900
-    state: after
-  ignore_errors: yes
-  loop:
-    #- system-auth
-    - password-auth
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
-  tags:
-    - level1
-    - patch
-    - rule_5.3.2
-    - low
+#- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
+#  pamd:
+#    name: '{{ item }}'
+#    type: auth
+#    control: required
+#    module_path: pam_deny.so
+#    new_type: auth
+#    new_control: required
+#    new_module_path: pam_faillock.so
+#    module_arguments: preauth audit silent deny=5 unlock_time=900
+#    state: after
+#  ignore_errors: yes
+#  loop:
+#    #- system-auth
+#    - password-auth
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+#  tags:
+#    - level1
+#    - patch
+#    - rule_5.3.2
+#    - low
 
 #- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
 #  pamd:
@@ -529,27 +551,27 @@
 #    - rule_5.3.2
 #    - low
 
-- name: 'SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured - pam_unix.so'
-  pamd:
-    name: '{{ item }}'
-    type: auth
-    control: required
-    module_path: pam_faillock.so
-    new_type: auth
-    new_control: '[success=1 default=bad]'
-    new_module_path: pam_unix.so
-    state: after
-  ignore_errors: yes
-  loop:
-    #- system-auth
-    - password-auth
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-  tags:
-    - level1
-    - patch
-    - rule_5.3.2
-    - low
+#- name: 'SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured - pam_unix.so'
+#  pamd:
+#    name: '{{ item }}'
+#    type: auth
+#    control: required
+#    module_path: pam_faillock.so
+#    new_type: auth
+#    new_control: '[success=1 default=bad]'
+#    new_module_path: pam_unix.so
+#    state: after
+#  ignore_errors: yes
+#  loop:
+#    #- system-auth
+#    - password-auth
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#  tags:
+#    - level1
+#    - patch
+#    - rule_5.3.2
+#    - low
 
 #- name: 'SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured - pam_unix.so'
 #  pamd:
@@ -614,29 +636,29 @@
 
 # START Line 3 # auth [default=die] pam_faillock.so authfail audit deny=5 unlock_time=900 #
 
-- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
-  pamd:
-    name: '{{ item }}'
-    type: auth
-    control: '[success=1 default=bad]'
-    module_path: pam_unix.so
-    new_type: auth
-    new_control: '[default=die]'
-    new_module_path: pam_faillock.so
-    module_arguments: authfail audit deny=5 unlock_time=900
-    state: after
-  ignore_errors: yes
-  loop:
-    #- system-auth
-    - password-auth
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
-  tags:
-    - level1
-    - patch
-    - rule_5.3.2
-    - low
+#- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
+#  pamd:
+#    name: '{{ item }}'
+#    type: auth
+#    control: '[success=1 default=bad]'
+#    module_path: pam_unix.so
+#    new_type: auth
+#    new_control: '[default=die]'
+#    new_module_path: pam_faillock.so
+#    module_arguments: authfail audit deny=5 unlock_time=900
+#    state: after
+#  ignore_errors: yes
+#  loop:
+#    #- system-auth
+#    - password-auth
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+#  tags:
+#    - level1
+#    - patch
+#    - rule_5.3.2
+#    - low
 
 #- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
 #  pamd:
@@ -708,30 +730,30 @@
 
 # START line 4 # auth sufficient pam_faillock.so authsucc audit deny=5 unlock_time=900 #
 
-- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
-  pamd:
-    name: '{{ item }}'
-    type: auth
-    control: '[default=die]'
-    module_path: pam_faillock.so 
-    module_arguments: authfail audit deny=5 unlock_time=900
-    new_type: auth
-    new_control: sufficient 
-    new_module_path: pam_faillock.so
-    module_arguments: authsucc audit deny=5 unlock_time=900
-    state: after
-  ignore_errors: yes
-  loop:
-    #- system-auth
-    - password-auth
-  when:
-    - centos7cis_level1 is defined and centos7cis_level1
-    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
-  tags:
-    - level1
-    - patch
-    - rule_5.3.2
-    - low
+#- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
+#  pamd:
+#    name: '{{ item }}'
+#    type: auth
+#    control: '[default=die]'
+#    module_path: pam_faillock.so 
+#    module_arguments: authfail audit deny=5 unlock_time=900
+#    new_type: auth
+#    new_control: sufficient 
+#    new_module_path: pam_faillock.so
+#    module_arguments: authsucc audit deny=5 unlock_time=900
+#    state: after
+#  ignore_errors: yes
+#  loop:
+#    #- system-auth
+#    - password-auth
+#  when:
+#    - centos7cis_level1 is defined and centos7cis_level1
+#    #- centos7cis_ad_ldap_joined_machine is defined and not centos7cis_ad_ldap_joined_machine
+#  tags:
+#    - level1
+#    - patch
+#    - rule_5.3.2
+#    - low
 
 #- name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
 #  pamd:
