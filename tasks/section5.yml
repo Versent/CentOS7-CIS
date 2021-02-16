@@ -438,16 +438,13 @@
 
 - name: "SCORED | 5.3.2 | Ensure lockout for failed password attempts is configured"
   blockinfile:
-    path: "{{ item.path }}"
+    path: /etc/pam.d/password-auth
     insertafter: '\s*auth\s*required\s*pam_deny.so\s*'
     block: |
       auth       required pam_faillock.so preauth audit silent deny=5 unlock_time=900
       auth       [success=1 default=bad] pam_unix.so
       auth       [default=die] pam_faillock.so authfail audit deny=5 unlock_time=900
       auth       sufficient pam_faillock.so authsucc audit deny=5 unlock_time=900"
-    with_items:
-      - /etc/pam.d/system-auth
-      - /etc/pam.d/password-auth
     when:
       - centos7cis_level1 is defined and centos7cis_level1
       #- centos7cis_password_expiration is defined and centos7cis_password_expiration
