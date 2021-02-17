@@ -506,3 +506,12 @@
     - level2
     - patch
     - rule_3.7
+
+- name: "NOTSCORED | 3 | WRITE | Write iptables to file"
+  command: iptables-save > /etc/sysconfig/iptables
+  changed_when: no
+  when:
+    - centos7cis_level1 is defined and centos7cis_level1
+  tags:
+    - level1
+    - level2

@@ -520,6 +520,15 @@
       - patch
       - rule_4.2.4
 
+- name: "SCORED | 4.2.4 | PATCH | Ensure permissions on all logfiles are configured"
+  command: find /var/log -type d -exec chmod g-wx,o-rwx {} \+
+  when:
+    - centos7cis_level1 is defined and centos7cis_level1
+  tags:
+      - level1
+      - patch
+      - rule_4.2.4
+
 - name: "NOTSCORED | 4.3 | PATCH | Ensure logrotate is configured"
   lineinfile:
       dest: /etc/logrotate.conf
