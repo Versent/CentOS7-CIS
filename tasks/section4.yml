@@ -336,7 +336,8 @@
   lineinfile:
     dest: /etc/rsyslog.conf
     regexp: '\*.\*'
-    line: "*.* @@{{ centos7cis_rsyslog_loghost_address }}"
+    #line: "*.* @@{{ centos7cis_rsyslog_loghost_address }}"
+    line: "*.* @@centos7cis_rsy10.133.2.249:514"
   when:
     - centos7cis_level1 is defined and centos7cis_level1
     #- centos7cis_rsyslog is defined and centos7cis_rsyslog
