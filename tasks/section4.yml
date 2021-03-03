@@ -335,7 +335,7 @@
 - name: "SCORED | 4.2.1.4 | PATCH | Ensure rsyslog is configured to send logs to a remote log host"
   lineinfile:
     dest: /etc/rsyslog.conf
-    regexp: "\\*.\\*"
+    regexp: "\*.\*"
     line: "*.* @@{{ centos7cis_rsyslog_loghost_address }}"
   when:
     - centos7cis_level1 is defined and centos7cis_level1
