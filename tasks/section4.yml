@@ -339,8 +339,8 @@
     line: "*.* @@{{ centos7cis_rsyslog_loghost_address }}"
   when:
     - centos7cis_level1 is defined and centos7cis_level1
-    - centos7cis_rsyslog is defined and centos7cis_rsyslog
-    - rsyslog_installed is defined and rsyslog_installed
+    #- centos7cis_rsyslog is defined and centos7cis_rsyslog
+    #- rsyslog_installed is defined and rsyslog_installed
   tags:
       - level1
       - patch
