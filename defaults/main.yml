@@ -185,7 +185,7 @@ centos7cis_log_server: false
 
 # Section 4.2.1.x | rsyslog settings
 # IF using rsyslog, set to true and loghost_address should be reflected here
-centos7cis_rsyslog: true
+centos7cis_rsyslog: false
 centos7cis_rsyslog_loghost_address: 10.133.2.249:514
 
 # Section 4.2.2.x | syslog_ng settings
