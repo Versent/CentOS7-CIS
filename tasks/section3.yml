@@ -411,29 +411,29 @@
     - patch
     - rule_3.6
 
-- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
-  iptables:
-    action: append
-    chain: INPUT
-    in_interface: lo
-    jump: ACCEPT
-  tags:
-    - level1
-    - patch
-    - rule_3.6.3
-    - low
-
-- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
-  iptables:
-    action: append
-    chain: OUTPUT
-    out_interface: lo
-    jump: ACCEPT
-  tags:
-    - level1
-    - patch
-    - rule_3.6.3
-    - low
+#- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
+#  iptables:
+#    action: append
+#    chain: INPUT
+#    in_interface: lo
+#    jump: ACCEPT
+#  tags:
+#    - level1
+#    - patch
+#    - rule_3.6.3
+#    - low
+#
+#- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
+#  iptables:
+#    action: append
+#    chain: OUTPUT
+#    out_interface: lo
+#    jump: ACCEPT
+#  tags:
+#    - level1
+#    - patch
+#    - rule_3.6.3
+#    - low
 
 #- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
 #  iptables:
