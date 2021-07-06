@@ -398,6 +398,41 @@
     - patch
     - rule_3.6
 
+- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
+  iptables:
+    action: append
+    chain: INPUT
+    in_interface: lo
+    jump: ACCEPT
+  tags:
+    - level1
+    - patch
+    - rule_3.6.3
+    - low
+
+- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
+  iptables:
+    action: append
+    chain: OUTPUT
+    out_interface: lo
+    jump: ACCEPT
+  tags:
+    - level1
+    - patch
+    - rule_3.6.3
+    - low
+- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
+  iptables:
+    action: append
+    chain: INPUT
+    source: 127.0.0.0/8
+    jump: DROP
+  tags:
+    - level1
+    - patch
+    - rule_3.6.3
+    - low
+
 - name: "SCORED | 3.6 | PATCH | Ensure firewalld is installed and started | CUSTOM"
   service:
     name: firewalld
@@ -410,43 +445,6 @@
     - level1
     - patch
     - rule_3.6
-
-#- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
-#  iptables:
-#    action: append
-#    chain: INPUT
-#    in_interface: lo
-#    jump: ACCEPT
-#  tags:
-#    - level1
-#    - patch
-#    - rule_3.6.3
-#    - low
-#
-#- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
-#  iptables:
-#    action: append
-#    chain: OUTPUT
-#    out_interface: lo
-#    jump: ACCEPT
-#  tags:
-#    - level1
-#    - patch
-#    - rule_3.6.3
-#    - low
-
-#- name: "SCORED | 3.6.3 | PATCH | Ensure loopback traffic is configure | CUSTOM"
-#  iptables:
-#    action: append
-#    chain: INPUT
-#    source: 127.0.0.0/8
-#    jump: DROP
-#  tags:
-#    - level1
-#    - patch
-#    - rule_3.6.3
-#    - low
-
 
 - name: "NOTSCORED | 3.6.4 | PATCH | Ensure outbound and established connections are configured -UDP"
   iptables:
